@@ -1,4 +1,4 @@
-package com.github.tomaslanger.cliprogress;
+package com.github.tomaslanger.cli.progress;
 
 import com.github.tomaslanger.chalk.Ansi;
 import com.github.tomaslanger.chalk.Chalk;
@@ -163,11 +163,11 @@ public class Features {
 
         System.out.println("Changing colors and character:");
         pb = new ProgressBar.Builder().build();
-        executeProgressingTaskChangeColor(pb, false);
+        executeProgressingTaskChangeColor(pb);
 
         System.out.println("Changing colors whole bar:");
         pb = new ProgressBar.Builder().setKeepSingleColor(true).build();
-        executeProgressingTaskChangeColor(pb, false);
+        executeProgressingTaskChangeColor(pb);
 
         System.out.println("Character only (no colors):");
         pb = new ProgressBar.Builder().noColors().build();
@@ -280,10 +280,8 @@ public class Features {
         }
     }
 
-    private static void executeProgressingTaskChangeColor(final ProgressBar pb, final boolean started) {
-        if (!started) {
-            pb.begin();
-        }
+    private static void executeProgressingTaskChangeColor(final ProgressBar pb) {
+        pb.begin();
 
         try {
             for (int progress = 0; progress < 100; progress += 1) {

@@ -113,7 +113,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.github.tomaslanger.cliprogress.Features</mainClass>
+              <mainClass>com.github.tomaslanger.cli.progress.Features</mainClass>
             </manifest>
           </archive>
         </configuration>

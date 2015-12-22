@@ -1,4 +1,4 @@
-package com.github.tomaslanger.cliprogress;
+package com.github.tomaslanger.cli.progress;
 
 import com.github.tomaslanger.chalk.Ansi;
 import com.github.tomaslanger.chalk.Chalk;
