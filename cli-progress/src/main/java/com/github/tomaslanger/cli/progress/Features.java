@@ -15,11 +15,7 @@ public class Features {
         Chalk.on("init");
 
         Features f = new Features();
-        f.recording();
-
-        if (1 ==1) {
-            return;
-        }
+//        f.recording();
 
         f.masterDetail(false);
         f.masterDetail(true);

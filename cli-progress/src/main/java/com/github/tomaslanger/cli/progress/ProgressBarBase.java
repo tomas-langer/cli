@@ -69,7 +69,7 @@ abstract class ProgressBarBase {
     }
 
     /**
-     * If we claimed standard &| error outputs, we must release them back. Otherwise we are in deep trouble...
+     * If we claimed standard and/or error outputs, we must release them back. Otherwise we are in deep trouble...
      * This would cause an out of memory if left unchecked!!!!
      * Always end your progress bars in finally block, unless you max cancel it.
      * End can be called multiple times (so you can cancel and then end in finally).

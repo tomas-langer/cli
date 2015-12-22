@@ -318,7 +318,7 @@ public abstract class ProgressBar extends ProgressBarBase {
          * <span style="background-color: #FF0000;">_______</span> <i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the progress bar line</i>
          * </p>
          *
-         * @param batchHeader
+         * @param batchHeader whether to print header or not
          * @return Builder instance
          */
         public Builder setBatchHeader(final boolean batchHeader) {
