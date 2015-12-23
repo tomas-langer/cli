@@ -30,18 +30,29 @@ abstract class ProgressBarBase {
 
     private boolean started;
     protected boolean iOwnOutput;
+    private StreamHandler.Replace replace;
 
     protected ProgressBarBase(Builder builder) {
         this.claimStdout = builder.shouldClaimStdout();
         this.claimStderr = builder.shouldClaimStderr();
     }
 
-    protected final synchronized void begin() {
+    public final synchronized void begin() {
         if (started) {
             throw new IllegalStateException("Cannot start a started progress bar.");
         }
         //redirect out and error streams until progress finishes
-        iOwnOutput = StreamHandler.replace(claimStdout, claimStderr, this::setOut);
+        this.replace = StreamHandler.replace(claimStdout, claimStderr, this::setOut);
+
+        switch(replace) {
+            case IMPOSSIBLE:
+                iOwnOutput = false;
+                break;
+            case DONE:
+            case NOT_REPLACED:
+                iOwnOutput = true;
+                break;
+        }
 
         if (iOwnOutput) {
             //print the progress bar header
@@ -55,10 +66,11 @@ abstract class ProgressBarBase {
      * Initialized elsewhere, just accept this stream.
      * @param out Print stream to use.
      */
-    final synchronized void begin(PrintStream out) {
+    public final synchronized void begin(PrintStream out) {
         if (started) {
             throw new IllegalStateException("Cannot start a started progress bar.");
         }
+        replace = StreamHandler.Replace.NOT_REPLACED;
         iOwnOutput = true;
 
         setOut(out);
@@ -81,9 +93,7 @@ abstract class ProgressBarBase {
 
         finishProgressBar(false);
 
-        if (iOwnOutput) {
-            StreamHandler.replaceBack();
-        }
+        StreamHandler.replaceBack(replace);
 
         iOwnOutput = false;
         started = false;
@@ -98,9 +108,8 @@ abstract class ProgressBarBase {
         }
 
         finishProgressBar(true);
-        if (iOwnOutput) {
-            StreamHandler.replaceBack();
-        }
+        StreamHandler.replaceBack(replace);
+
         iOwnOutput = false;
         started = false;
     }

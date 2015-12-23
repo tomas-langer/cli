@@ -14,17 +14,32 @@ import java.util.function.Consumer;
  * @author Tomas Langer (tomas.langer@gmail.com)
  */
 class StreamHandler {
+    enum Replace {
+        /**
+         * Somebody else owns the replaced streams
+         */
+        IMPOSSIBLE,
+        /**
+         * You own the replaced streams
+         */
+        DONE,
+        /**
+         * Streams not replaced
+         */
+        NOT_REPLACED
+    }
     private static boolean replaced;
     private static ByteArrayOutputStream stdOutBuffer = new ByteArrayOutputStream();
     private static ByteArrayOutputStream stdErrBuffer = new ByteArrayOutputStream();
     private static PrintStream sysOut;
     private static PrintStream sysErr;
 
-    static synchronized boolean replace(final boolean replaceOut, final boolean replaceErr, final Consumer<PrintStream> setter) {
+    static synchronized Replace replace(final boolean replaceOut, final boolean replaceErr, final Consumer<PrintStream> setter) {
         if (replaced) {
             //currently configured system output (writing to one of my buffers above)
             setter.accept(System.out);
-            return !(replaceOut || replaceErr);
+
+            return Replace.IMPOSSIBLE;
         }
 
         sysOut = System.out;
@@ -41,15 +56,20 @@ class StreamHandler {
 
         replaced = replaceOut || replaceErr;
 
-        return true;
+        return (replaced? Replace.DONE: Replace.NOT_REPLACED);
     }
 
-    static synchronized void replaceBack() {
+    static synchronized void replaceBack(final Replace replace) {
+        switch(replace) {
+            case IMPOSSIBLE:
+            case NOT_REPLACED:
+                return;
+        }
+
+        //this should not be possible, maybe somebody called me twice?
         if (!replaced) {
             return;
         }
-
-        replaced = false;
 
         System.setOut(sysOut);
         System.setErr(sysErr);
@@ -66,6 +86,8 @@ class StreamHandler {
 
         stdOutBuffer = new ByteArrayOutputStream();
         stdErrBuffer = new ByteArrayOutputStream();
+
+        replaced = false;
     }
 
 }

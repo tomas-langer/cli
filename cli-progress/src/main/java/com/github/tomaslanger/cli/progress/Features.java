@@ -104,12 +104,12 @@ public class Features {
         System.out.println();
         System.out.println(Chalk.on("Execution Time (2015-12-21 09:08:31 UTC)").white());
         String begin1 = "loading tasks   " + Chalk.on("20ms  ").blue();
-        ProgressBar pb = new ProgressBar.Builder().setCharCount(20).setBeginString(begin1).setBgColor(Ansi.BgColor.BLUE).disablePercents().build();
+        ProgressBar pb = new ProgressBar.Builder().setCharCount(20).setBeginString(begin1).setStatusColor(Ansi.Color.BLUE).setBgColor(Ansi.BgColor.BLUE).disablePercents().setStatusLocation(StatusLoc.SAME_LINE).build();
         pb.begin();
         pb.setProgress(100, "20%");
         pb.end();
         String begin2 = "clean:dist      " + Chalk.on("70ms  ").blue();
-        pb = new ProgressBar.Builder().setCharCount(77).setBeginString(begin2).setBgColor(Ansi.BgColor.BLUE).disablePercents().build();
+        pb = new ProgressBar.Builder().setCharCount(77).setBeginString(begin2).setStatusColor(Ansi.Color.BLUE).setBgColor(Ansi.BgColor.BLUE).disablePercents().setStatusLocation(StatusLoc.SAME_LINE).build();
         pb.begin();
         pb.setProgress(100, "77%");
         pb.end();
@@ -145,7 +145,6 @@ public class Features {
         pb = new ProgressBar.Builder().
                 setMax(250).
                 setStatusLocation(StatusLoc.FIRST_LINE).
-                setStatusColor(null).
                 build();
         executeDifferentMax(pb);
 
@@ -153,7 +152,6 @@ public class Features {
         pb = new ProgressBar.Builder().
                 setMax(250).
                 setStatusLocation(StatusLoc.LAST_LINE).
-                setStatusColor(Ansi.Color.CYAN).
                 build();
         executeDifferentMax(pb);
 
@@ -247,10 +245,10 @@ public class Features {
         pb.begin();
         try {
             for (int progress = 0; progress < pb.getMax(); progress += 1) {
-                pb.setProgress(progress, "Progress at " + progress);
+                pb.setProgress(progress, "Progress " + Chalk.on("at").yellow() + " " + progress);
                 Thread.sleep(20);
             }
-            pb.setProgress(pb.getMax(), "Progress " + Chalk.on("at").underline().yellow() + " " + pb.getMax());
+            pb.setProgress(pb.getMax(), "Progress " + Chalk.on("at").yellow() + " " + pb.getMax());
         } catch (InterruptedException e) {
             System.err.println("Interrupted");
         } finally {

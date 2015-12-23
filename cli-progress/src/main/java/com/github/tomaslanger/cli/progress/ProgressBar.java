@@ -205,11 +205,11 @@ public abstract class ProgressBar extends ProgressBarBase {
 
     protected abstract void printCancel(final PrintStream out);
 
-    int getMax() {
+    public int getMax() {
         return max;
     }
 
-    protected static class Builder extends ProgressBarBase.Builder<ProgressBar.Builder> {
+    public static class Builder extends ProgressBarBase.Builder<ProgressBar.Builder> {
         /*
          * Common properties
          */
