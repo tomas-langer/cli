@@ -20,7 +20,7 @@ Java does not have this possibility.
 As soon as first release is available, we shall have it on Maven central.
 
      <dependency>
-       <groupId>com.github.tomas-langer</groupId>
+       <groupId>com.github.tomas-langer.cli</groupId>
        <artifactId>cli-progress</artifactId>
        <version>1.0.0</version>
      </dependency>

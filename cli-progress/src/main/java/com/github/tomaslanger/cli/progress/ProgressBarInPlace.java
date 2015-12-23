@@ -1,4 +1,4 @@
-package com.github.tomaslanger.cliprogress;
+package com.github.tomaslanger.cli.progress;
 
 import com.github.tomaslanger.chalk.Ansi;
 import com.github.tomaslanger.chalk.Chalk;
@@ -141,7 +141,7 @@ class ProgressBarInPlace extends ProgressBar {
         if (isVisible) {
             if (statusLocation != StatusLoc.SAME_LINE) {
                 //max two lines, I always move just one line up
-                out.print(Ansi.AnsiCommand.CURSOR_UP);
+                out.print(Ansi.cursorUp());
             }
             out.print('\r');
         }

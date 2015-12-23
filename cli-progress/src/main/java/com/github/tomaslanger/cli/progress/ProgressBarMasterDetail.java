@@ -1,4 +1,4 @@
-package com.github.tomaslanger.cliprogress;
+package com.github.tomaslanger.cli.progress;
 
 import com.github.tomaslanger.chalk.Ansi;
 import com.github.tomaslanger.chalk.Chalk;
@@ -64,8 +64,7 @@ public class ProgressBarMasterDetail extends ProgressBarBase {
             child.setStatus(null);
             child.end();
             //compensate for last end of line after we finish the sub task
-            out.print(Ansi.AnsiCommand.CURSOR_UP);
-            out.print(Ansi.AnsiCommand.CURSOR_UP);
+            out.print(Ansi.cursorUp(2));
             out.print('\r');
         }
 
@@ -88,15 +87,13 @@ public class ProgressBarMasterDetail extends ProgressBarBase {
         this.currentTaskProgress = currentTaskProgress;
 
         if (!isBatch) {
-            out.print(Ansi.AnsiCommand.CURSOR_UP);
-            out.print(Ansi.AnsiCommand.CURSOR_UP);
+            out.print(Ansi.cursorUp(2));
         }
 
         master.setProgress(overallProgress + this.currentTaskProgress);
 
         if (!isBatch) {
-            out.print(Ansi.AnsiCommand.CURSOR_DOWN);
-            out.print(Ansi.AnsiCommand.CURSOR_DOWN);
+            out.print(Ansi.cursorDown(2));
             child.setProgress(currentTaskProgress, infoText);
         }
     }

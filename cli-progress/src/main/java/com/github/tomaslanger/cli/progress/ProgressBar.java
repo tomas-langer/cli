@@ -1,4 +1,4 @@
-package com.github.tomaslanger.cliprogress;
+package com.github.tomaslanger.cli.progress;
 
 import com.github.tomaslanger.chalk.Ansi;
 import com.github.tomaslanger.chalk.Chalk;
@@ -205,11 +205,11 @@ public abstract class ProgressBar extends ProgressBarBase {
 
     protected abstract void printCancel(final PrintStream out);
 
-    int getMax() {
+    public int getMax() {
         return max;
     }
 
-    protected static class Builder extends ProgressBarBase.Builder<ProgressBar.Builder> {
+    public static class Builder extends ProgressBarBase.Builder<ProgressBar.Builder> {
         /*
          * Common properties
          */
@@ -318,7 +318,7 @@ public abstract class ProgressBar extends ProgressBarBase {
          * <span style="background-color: #FF0000;">_______</span> <i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is the progress bar line</i>
          * </p>
          *
-         * @param batchHeader
+         * @param batchHeader whether to print header or not
          * @return Builder instance
          */
         public Builder setBatchHeader(final boolean batchHeader) {
