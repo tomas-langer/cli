@@ -10,7 +10,7 @@
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Tools to create a beautiful command line interface (in java)</description>
-  <url>https://github.com/tomas-langer/cli-beauty</url>
+  <url>https://github.com/tomas-langer/cli</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -122,9 +122,9 @@
   </build>
 
   <scm>
-    <connection>scm:git:https://github.com/tomas-langer/cli-beauty.git</connection>
-    <developerConnection>scm:git:https://github.com/tomas-langer/cli-beauty.git</developerConnection>
-    <url>scm:git:https://github.com/tomas-langer/cli-beauty.git</url>
+    <connection>scm:git:https://github.com/tomas-langer/cli.git</connection>
+    <developerConnection>scm:git:https://github.com/tomas-langer/cli.git</developerConnection>
+    <url>scm:git:https://github.com/tomas-langer/cli.git</url>
     <tag>HEAD</tag>
   </scm>
 
