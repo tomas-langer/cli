@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github.tomas-langer.cli</groupId>
-  <artifactId>cli-progress</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <artifactId>cli-choice</artifactId>
+  <version>1.0.0</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
-  <description>Tools to create a beautiful command line interface (in java)</description>
+  <description>Tools to create a beautiful command line interface - single and multiple choice (in java)</description>
   <url>https://github.com/tomas-langer/cli</url>
 
   <properties>
@@ -17,20 +18,18 @@
   </properties>
 
   <dependencies>
-    <!-- For coloring output -->
+    <!-- For coloring output and controlling cursor -->
     <dependency>
       <groupId>com.github.tomas-langer</groupId>
       <artifactId>chalk</artifactId>
       <version>1.0.2</version>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -111,7 +110,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.github.tomaslanger.cli.progress.Features</mainClass>
+              <mainClass>com.github.tomaslanger.cli.choice.Features</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -123,7 +122,7 @@
     <connection>scm:git:https://github.com/tomas-langer/cli.git</connection>
     <developerConnection>scm:git:https://github.com/tomas-langer/cli.git</developerConnection>
     <url>scm:git:https://github.com/tomas-langer/cli.git</url>
-    <tag>HEAD</tag>
+    <tag>cli-choice-1.0.0</tag>
   </scm>
 
   <distributionManagement>

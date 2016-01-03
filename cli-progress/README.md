@@ -22,7 +22,7 @@ As soon as first release is available, we shall have it on Maven central.
      <dependency>
        <groupId>com.github.tomas-langer.cli</groupId>
        <artifactId>cli-progress</artifactId>
-       <version>1.0.0</version>
+       <version>1.0.1</version>
      </dependency>
 
 This project has one dependency - com.github.tomas-langer:chalk for colors
