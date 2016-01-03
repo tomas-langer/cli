@@ -10,6 +10,7 @@
 
   <modules>
     <module>cli-progress</module>
+    <module>cli-choice</module>
   </modules>
 
 

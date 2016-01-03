@@ -17,7 +17,7 @@ npm and related tools have nice progress bars...
 Java does not have this possibility.
 
 ## Install
-As soon as first release is available, we shall have it on Maven central.
+We are on maven central:
 
      <dependency>
        <groupId>com.github.tomas-langer.cli</groupId>
