@@ -5,7 +5,7 @@
 
   <groupId>com.github.tomas-langer.cli</groupId>
   <artifactId>cli-choice</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Tools to create a beautiful command line interface - single and multiple choice (in java)</description>
