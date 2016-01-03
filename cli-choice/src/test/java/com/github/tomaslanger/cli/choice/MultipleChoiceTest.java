@@ -13,7 +13,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * TODO: Javadoc
+ * JUnit test for multiple choice.
+ *
  * User: Tomas.Langer
  * Date: 3.1.2016
  * Time: 21:52
