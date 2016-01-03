@@ -79,6 +79,7 @@ public class Option<T> {
 
     /**
      * Get the string to display to user for this option. Should be unique in one choice to avoid ambiguity (not enforced).
+     *
      * @return String option text
      */
     public String getOptionText() {
@@ -143,6 +144,7 @@ public class Option<T> {
 
     /**
      * Value a system property is compared against if provided. Defaults to optionText.
+     *
      * @return system property expected value for this option
      */
     public String getSysPropValue() {
@@ -154,6 +156,7 @@ public class Option<T> {
      * Defaults to optionText.
      *
      * @param sysPropValue Value to check system property against.
+     * @return Option this instance
      */
     public Option setSysPropValue(final String sysPropValue) {
         this.sysPropValue = sysPropValue;
@@ -182,6 +185,7 @@ public class Option<T> {
 
     /**
      * Adds a child for tree options. Note that children are absolutely ignored by {@link SingleChoice single} and {@link MultipleChoice multi} choices.
+     *
      * @param child Child to be added to children collection.
      */
     public synchronized void addChild(Option<T> child) {

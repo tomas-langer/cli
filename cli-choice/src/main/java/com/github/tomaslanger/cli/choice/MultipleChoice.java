@@ -31,6 +31,7 @@ public class MultipleChoice extends ChoiceBase {
      * @param defaultValue default value to preselect. Default value MUST be provided, as otherwise it would not
      *                     work on environments that do not have input support. You can override the default value
      *                     if you use {@link #select(String, Option[])} or {@link #select(String, List)}
+     * @param <T>          the type of the option
      * @return selected values (or default if this environment does not support user input).
      */
     public <T> List<T> select(T[] defaultValue, List<T> options) {
@@ -66,7 +67,10 @@ public class MultipleChoice extends ChoiceBase {
     /**
      * Show options and return the option selected by user.
      *
-     * @see #select(Object[], List)
+     * @param defaultValue default values (preselected)
+     * @param options      options (that must contain default values)
+     * @param <T>          the type of the option
+     * @return List of selected options by user
      */
     @SafeVarargs
     public final <T> List<T> select(T[] defaultValue, T... options) {
@@ -74,9 +78,11 @@ public class MultipleChoice extends ChoiceBase {
     }
 
     /**
-     * Show options and return the option(s) selected by user.
+     * Show options and return the option selected by user.
      *
-     * @see #select(String, List)
+     * @param options Options wrapping the original types, defining text to show, whether pre-selected or not etc.
+     * @param <T>     the type of the wrapped object
+     * @return List of selected options by user
      */
     @SafeVarargs
     public final <T> List<Option<T>> select(final Option<T>... options) {
@@ -84,9 +90,12 @@ public class MultipleChoice extends ChoiceBase {
     }
 
     /**
-     * Show options and return the option(s) selected by user.
+     * Show options and return the option selected by user.
      *
-     * @see #select(String, List)
+     * @param systemProperty name of system property that can override the pre-selected values
+     * @param options        Options wrapping the original types, defining text to show, whether pre-selected or not etc.
+     * @param <T>            the type of the wrapped object
+     * @return List of selected options by user
      */
     @SafeVarargs
     public final <T> List<Option<T>> select(final String systemProperty, final Option<T>... options) {
@@ -94,12 +103,14 @@ public class MultipleChoice extends ChoiceBase {
     }
 
     /**
-     * Show options and return the option(s) selected by user.
+     * Show options and return the option selected by user.
      *
-     * @see #select(String, List)
+     * @param options Options wrapping the original types, defining text to show, whether pre-selected or not etc.
+     * @param <T>     the type of the wrapped object
+     * @return List of selected options by user
      */
     public <T> List<Option<T>> select(final List<Option<T>> options) {
-        return select((String)null, options);
+        return select((String) null, options);
     }
 
     /**
@@ -107,9 +118,8 @@ public class MultipleChoice extends ChoiceBase {
      * set to true.
      *
      * @param systemProperty system property that defines default values (can be used for silent installations etc.). The value of the property is expected to be comma separated list of {@link Option#getSysPropValue()}
-     * @param options List of options to present to users. Note that options are mutable and selection status will be written to them
-     * @param <T> Type of the wrapped object
-     *
+     * @param options        List of options to present to users. Note that options are mutable and selection status will be written to them
+     * @param <T>            Type of the wrapped object
      * @return List of selected options.
      */
     public <T> List<Option<T>> select(final String systemProperty, final List<Option<T>> options) {

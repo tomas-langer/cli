@@ -155,7 +155,7 @@ abstract class ChoiceBase {
          * <ul>
          *     <li> 1: ( ) Unselected choice</li>
          *     <li> 2: (*) Selected choice</li>
-         *     <li>Your choice:>
+         *     <li>Your choice:&gt;
          * </ul>
          * The toggle strings are customizable (the space for unselected and asterisk for selected). The input line
          * is also customizable.

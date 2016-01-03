@@ -33,10 +33,11 @@ public class SingleChoice extends ChoiceBase {
     /**
      * Show options and return the option selected by user.
      *
-     * @param options      options to show to user. The {@link Object#toString()} is used to print the text to user.
      * @param defaultValue default value to preselect. Default value MUST be provided, as otherwise it would not
      *                     work on environments that do not have input support. You can override the default value
      *                     if you use {@link #select(Object, List, String)}
+     * @param options      options to show to user. The {@link Object#toString()} is used to print the text to user.
+     * @param <T>          type of option objects
      * @return selected value (or default if this environment does not support user input).
      */
     public <T> T select(T defaultValue, List<T> options) {
@@ -46,7 +47,12 @@ public class SingleChoice extends ChoiceBase {
     /**
      * Show options and return the option selected by user.
      *
-     * @see #select(Object, List)
+     * @param defaultValue default value to preselect. Default value MUST be provided, as otherwise it would not
+     *                     work on environments that do not have input support. You can override the default value
+     *                     if you use {@link #select(Object, List, String)}
+     * @param options      options to show to user. The {@link Object#toString()} is used to print the text to user.
+     * @param <T>          type of option objects
+     * @return selected value (or default if this environment does not support user input).
      */
     @SafeVarargs
     public final <T> T select(T defaultValue, T... options) {
@@ -61,6 +67,7 @@ public class SingleChoice extends ChoiceBase {
      *                       work on environments that do not have input support.
      * @param systemProperty name of system property to use to pre-select default value, e.g. when doing silent installation. The value must be equal to the
      *                       string representation of the option.
+     * @param <T>            type of option objects
      * @return selected value (or default if this environment does not support user input).
      */
     public <T> T select(T defaultValue, List<T> options, String systemProperty) {
@@ -106,7 +113,8 @@ public class SingleChoice extends ChoiceBase {
     /**
      * Select with full control on options - can have separate value and text description, can define defaults.
      *
-     * @param options options to choose from
+     * @param options options to choose from, defining text to show to user, whether preselected or not etc.
+     * @param <T>     type of wrapped objects
      * @return selected option
      */
     @SafeVarargs
@@ -117,8 +125,9 @@ public class SingleChoice extends ChoiceBase {
     /**
      * Select with full control on options - can have separate value and text description, can define defaults.
      *
-     * @param options        options to choose from
+     * @param options        options to choose from, defining text to show to user, whether preselected or not etc.
      * @param systemProperty name of system property that can define default value (e.g. for silent installs)
+     * @param <T>            type of wrapped objects
      * @return selected option
      */
     @SafeVarargs
@@ -132,6 +141,7 @@ public class SingleChoice extends ChoiceBase {
      *
      * @param options        options to choose from, mutated as selected by user
      * @param systemProperty name of system property that can define default value (e.g. for silent installs)
+     * @param <T>            type of wrapped objects
      * @return selected option
      */
     public <T> Option<T> select(final String systemProperty, final List<Option<T>> options) {
@@ -171,11 +181,12 @@ public class SingleChoice extends ChoiceBase {
     /**
      * Select with full control on options - can have separate value and text description, can define defaults.
      *
-     * @param options        options to choose from, mutated as selected by user
+     * @param options options to choose from, mutated as selected by user
+     * @param <T>     type of wrapped objects
      * @return selected option
      */
     public <T> Option<T> select(final List<Option<T>> options) {
-        return select((String)null, options);
+        return select((String) null, options);
     }
 
     private <T> Option<T> _select(final List<Option<T>> options) {
